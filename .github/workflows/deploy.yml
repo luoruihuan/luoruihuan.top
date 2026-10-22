@@ -31,6 +31,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
+        env:
+          PUBLIC_GOOGLE_SITE_VERIFICATION: 1hU4H0fKElslOqdW5Npr3g8eIq8ldV8NaugW5Pc2S8Q
         run: pnpm run build
 
       - name: Deploy via rsync
