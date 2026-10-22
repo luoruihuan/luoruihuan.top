@@ -23,9 +23,45 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const homePath = getRelativeLocaleUrl(locale, "");
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://luoruihuan.top/#person",
+      name: "技术派罗恩",
+      alternateName: "Ron Luo",
+      url: "https://luoruihuan.top",
+      jobTitle: "全栈工程师",
+      description:
+        "94 年全栈工程师，10+ 年互联网经验，专注 AI Agent 开发、FDE 与 GEO",
+      email: "mailto:luoruihuan2015@gmail.com",
+      sameAs: ["https://github.com/luoruihuan"],
+      knowsAbout: [
+        "AI Agent 开发",
+        "GEO（生成式引擎优化）",
+        "FDE",
+        "TypeScript",
+        "Node.js",
+        "Python",
+        "React",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://luoruihuan.top/#website",
+      url: "https://luoruihuan.top",
+      name: "技术派罗恩",
+      inLanguage: "zh-CN",
+      publisher: { "@id": "https://luoruihuan.top/#person" },
+    },
+  ],
+};
 ---
 
 <Layout>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <Header />
   <main
     id="main-content"

@@ -8,7 +8,7 @@ export default defineAstroPaperConfig({
       "技术派罗恩的个人网站：94 年全栈工程师，10+ 年互联网经验，专注 AI Agent 开发、FDE 与 GEO（生成式引擎优化）。聊 AI 实战、全栈工程、工程师搞钱。",
     author: "技术派罗恩",
     profile: "https://luoruihuan.top",
-    ogImage: "default-og.jpg",
+    ogImage: "og.png",
     lang: "zh-CN",
     timezone: "Asia/Shanghai",
     dir: "ltr",
