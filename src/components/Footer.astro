@@ -21,10 +21,21 @@ const currentYear = new Date().getFullYear();
     class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
   >
     <Socials />
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
-      <span>{t.footer.copyright} &#169; {currentYear}</span>
+    <div class="my-2 flex flex-col items-center gap-1 whitespace-nowrap sm:flex-row">
+      <div class="flex flex-col items-center sm:flex-row">
+        <span>{t.footer.copyright} &#169; {currentYear}</span>
+        <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
+        <span>{t.footer.allRightsReserved}</span>
+      </div>
       <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
-      <span>{t.footer.allRightsReserved}</span>
+      <a
+        href="https://beian.miit.gov.cn/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-accent transition-colors"
+      >
+        苏ICP备2025159738号-2
+      </a>
     </div>
   </div>
 </footer>
