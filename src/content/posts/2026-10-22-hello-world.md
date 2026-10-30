@@ -1,13 +1,11 @@
 ---
 title: 开篇：技术派罗恩上线，聊 AI 实战、全栈工程和工程师搞钱
+published: 2026-10-22T15:00:00+08:00
+pinned: true
+draft: false
 description: 这个网站的由来：我是谁、为什么写、以及这个站本身是怎么搭起来的——Astro + Cloudflare Tunnel + GitHub Actions 的完整链路。
-pubDatetime: 2026-10-22T15:00:00+08:00
-featured: true
-tags:
-  - 随笔
-  - 全栈工程
+tags: [随笔, 全栈工程]
 ---
-
 你好，我是**技术派罗恩**。
 
 94 年，全栈工程师，坐标苏州。专科起步、专升本、最后从苏州大学计算机毕业——这条路走得不算快，但 10 多年互联网研发干下来，每一步都算数。
@@ -35,3 +33,4 @@ tags:
 我信奉一个原则：**一手经验大于二手总结**。这个网站上的一切内容，都来自我真实做过的东西——包括你现在看到的这个页面。
 
 欢迎订阅 [RSS](/rss.xml)，也欢迎来 [GitHub](https://github.com/luoruihuan) 找我聊聊。
+

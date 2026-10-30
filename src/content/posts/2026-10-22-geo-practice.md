@@ -1,14 +1,11 @@
 ---
 title: 个人网站 GEO 实践：让 ChatGPT、Perplexity 引用你的内容
+published: 2026-10-22T16:00:00+08:00
+pinned: true
+draft: false
 description: GEO（生成式引擎优化）不是玄学。以这个网站的真实配置为例，拆解 AI 爬虫矩阵、llms.txt、结构化数据和内容策略的完整落地。
-pubDatetime: 2026-10-22T16:00:00+08:00
-featured: true
-tags:
-  - GEO
-  - SEO
-  - AI
+tags: [GEO, SEO, AI]
 ---
-
 越来越多的人通过 ChatGPT、Perplexity、豆包获取信息，而不是 Google。让你的内容被这些 AI 引擎**引用**，就是 GEO（Generative Engine Optimization，生成式引擎优化）要解决的问题。
 
 我自己在做 GEO 方向的产品（一个生成式推荐优化工作台），这个网站本身就是我的方法论的试验田。这篇文章拆解真实配置，所有代码你都可以在这个站的[仓库](https://github.com/luoruihuan/luoruihuan.top)里找到。
@@ -93,3 +90,4 @@ Google 的 [AI 功能优化指南](https://developers.google.com/search/docs/fun
 GEO 的技术部分（爬虫矩阵、静态化、结构化数据）是一小时的活；真正决定被引用的是**持续输出值得引用的一手内容**。
 
 技术是杠杆，内容是本金。这个站两者都有，接下来交给时间。
+
