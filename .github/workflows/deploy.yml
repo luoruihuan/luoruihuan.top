@@ -18,28 +18,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node
         uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm run build
-
-      - name: Deploy via rsync
-        env:
-          VM2_SSH_KEY: ${{ secrets.VM2_SSH_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$VM2_SSH_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H 129.146.16.16 >> ~/.ssh/known_hosts 2>/dev/null
-          rsync -az --delete dist/ ubuntu@129.146.16.16:/var/www/ron-site/
-          echo "✅ deployed at $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
