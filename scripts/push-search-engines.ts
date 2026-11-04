@@ -21,7 +21,7 @@ import { readFileSync } from "node:fs";
 
 const SITE = "https://luoruihuan.top";
 const SITEMAP_URL = `${SITE}/sitemap-0.xml`;
-const BAIDU_API = "http://data.zz.baidu.com/urls?site=luoruihuan.top";
+const BAIDU_API = "http://data.zz.baidu.com/urls?site=https://luoruihuan.top";
 const INDEXNOW_API = "https://api.indexnow.org/indexnow";
 
 // ---------- .env 加载(无依赖,合并 process.env 优先) ----------
