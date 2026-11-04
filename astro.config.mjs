@@ -1,4 +1,5 @@
 import { setMaxListeners } from "node:events";
+import { readFileSync, readdirSync } from "node:fs";
 import cloudflare from "@astrojs/cloudflare";
 import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
@@ -58,6 +59,35 @@ import { collectUsedFontCssVars } from "./src/utils/fontHelper";
 if (process.env.NODE_ENV === "development") {
 	setMaxListeners(20);
 }
+
+// sitemap lastmod 数据源:文章页用 frontmatter 的 updated(优先)/published,
+// URL 规则与内容集合一致 —— 有 slug 用 slug,否则用文件名 basename。
+// 非文章页不输出 lastmod,避免每次构建全量刷新导致搜索引擎失去信任。
+const postLastmodByPath = (() => {
+	const map = new Map();
+	try {
+		const dir = new URL("./src/content/posts/", import.meta.url);
+		for (const file of readdirSync(dir)) {
+			if (!file.endsWith(".md")) continue;
+			const raw = readFileSync(new URL(`./${file}`, dir), "utf8");
+			const fm = raw.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? "";
+			const pick = (key) =>
+				fm.match(new RegExp(`^${key}:\\s*["']?([^"'\n]+)`, "m"))?.[1]?.trim();
+			const dateStr = pick("updated") || pick("published");
+			if (!dateStr) continue;
+			const d = new Date(dateStr);
+			if (Number.isNaN(d.getTime())) continue;
+			const slug = pick("slug") || file.replace(/\.md$/, "");
+			map.set(`/posts/${slug}/`, d.toISOString());
+		}
+	} catch {
+		// 读取失败时退化为无 lastmod,不影响构建
+	}
+	return map;
+})();
+const latestPostLastmod = postLastmodByPath.size
+	? [...postLastmodByPath.values()].sort().at(-1)
+	: undefined;
 
 const adapter = process.env.CF_WORKERS
 	? cloudflare({
@@ -279,6 +309,21 @@ export default defineConfig({
 					return false;
 				}
 				return true;
+			},
+			serialize: ({ url, lastmod, ...item }) => {
+				// 文章页 → updated/published;首页 → 最新文章时间;其余页面保持默认
+				let resolved = lastmod;
+				try {
+					const pathname = new URL(url).pathname;
+					if (postLastmodByPath.has(pathname)) {
+						resolved = postLastmodByPath.get(pathname);
+					} else if (pathname === "/") {
+						resolved = latestPostLastmod ?? lastmod;
+					}
+				} catch {
+					// URL 解析失败保持默认
+				}
+				return resolved ? { ...item, url, lastmod: resolved } : { ...item, url };
 			},
 		}),
 		mdx(),
