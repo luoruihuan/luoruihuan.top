@@ -1,7 +1,7 @@
 ---
 title: 个人网站 GEO 实践：让 ChatGPT、Perplexity 引用你的内容
 published: 2026-10-22T16:00:00+08:00
-pinned: true
+pinned: false
 draft: false
 description: GEO（生成式引擎优化）不是玄学。以这个网站的真实配置为例，拆解 AI 爬虫矩阵、llms.txt、结构化数据和内容策略的完整落地。
 tags: [GEO, SEO, AI]

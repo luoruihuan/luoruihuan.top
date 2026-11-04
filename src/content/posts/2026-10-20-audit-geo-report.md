@@ -1,7 +1,7 @@
 ---
 title: 我审计了一份第三方 GEO 检测报告，教你怎么看数据水分
 published: 2026-10-20T18:00:00+08:00
-pinned: true
+pinned: false
 draft: false
 description: 从页面数据包与渲染逻辑入手，拆解一份 GEO 检测报告的五处水分：凑数的明细、复用的证据、虚拟的引用、直给的基准分与对称的优化预测，附七条验收清单。
 tags: [GEO, 数据分析]
